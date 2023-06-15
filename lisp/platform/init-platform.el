@@ -15,7 +15,7 @@
 	      w32-pipe-read-delay 0
 	      w32-pipe-buffer-size (* 64 1024))))
  (os--macos
-  ;; <macOs> Command -> super, Option -> meta
+  ;; <macOS> Command -> super, Option -> meta
   (setq mac-command-modifier 'super
 	    mac-option-modifier 'meta
 	    ns-use-native-fullscreen t))
