@@ -60,6 +60,14 @@
   (advice-add 'eglot-code-action-organize-imports :before #'eglot-format-buffer)
   (add-hook 'eglot-managed-mode-hook (lambda () (add-hook 'before-save-hook #'eglot-format-buffer))))
 
+;; vterm is better than builtin eshell
+(use-package vterm
+  :bind
+  ;; remap the project-shell to use vterm
+  ([remap project-shell] . vterm))
+
+;; magit for VC, I like the magit.
+(use-package magit)
 
 (provide 'init-lang)
 
