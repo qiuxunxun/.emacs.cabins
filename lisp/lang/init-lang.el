@@ -57,8 +57,24 @@
   :hook ((c-mode c++-mode css-mode go-mode java-mode js-mode kotlin-mode python-mode rust-mode ruby-mode web-mode) . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs '(web-mode "vls"))
-  (advice-add 'eglot-code-action-organize-imports :before #'eglot-format-buffer)
-  (add-hook 'eglot-managed-mode-hook (lambda () (add-hook 'before-save-hook #'eglot-format-buffer))))
+  (defun eglot-format-buffer-on-save ()
+    (add-hook 'before-save-hook #'eglot-format-buffer -10 t))
+  (add-hook 'go-mode-hook #'eglot-format-buffer-on-save)
+
+  (defun +eglot-organize-imports() (call-interactively 'eglot-code-action-organize-imports))
+  (add-hook 'before-save-hook '+eglot-organize-imports nil t)
+
+  ;;(advice-add 'eglot-code-action-organize-imports :before #'eglot-format-buffer)
+  ;;(add-hook 'eglot-managed-mode-hook (lambda () (add-hook 'before-save-hook #'eglot-format-buffer))))
+  )
+
+(add-hook 'go-mode-hook
+	    (lambda ()
+	      (setq indent-tabs-mode 1)
+	      (setq tab-width 4)))
+
+
+
 
 ;; vterm is better than builtin eshell
 (use-package vterm
