@@ -12,6 +12,11 @@
   :config (setq company-minimum-prefix-length 1
                 company-show-quick-access nil))
 
+;; With use-package to install company-box to show the info
+(use-package company-box
+  :after (company)
+  :hook (company-mode . company-box-mode))
+
 ;; crux, a collection of many useful extensions/commands
 ;; without key-binding you can use
 ;; C-a for its original definition
