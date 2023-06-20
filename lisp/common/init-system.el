@@ -20,7 +20,7 @@
       help-window-select t
       inhibit-startup-screen t	   ; disable the startup screen splash
       inhibit-default-init t
-      initial-major-mode 'fundamental-mode
+;;      initial-major-mode 'fundamental-mode
       make-backup-files nil             ; disable backup file
       read-process-output-max (* 64 1024)
       scroll-conservatively 10000
