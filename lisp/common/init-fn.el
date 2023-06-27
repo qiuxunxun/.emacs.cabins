@@ -78,7 +78,7 @@
   (interactive)
   (when (display-graphic-p)
     (let ((light-theme (cabins/available-theme '(modus-operandi leuven tsdh-light tango whiteboard)))
-          (dark-theme (cabins/available-theme '(dracula modus-vivendi leuven-dark tsdh-dark tango-dark wombat dichromacy))))
+          (dark-theme (cabins/available-theme '(modus-vivendi dracula  leuven-dark tsdh-dark tango-dark wombat dichromacy))))
       (if (cabins/os-dark-mode)
           (load-theme dark-theme t)
         (load-theme light-theme t)))))
