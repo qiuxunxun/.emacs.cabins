@@ -81,7 +81,15 @@
   :bind
   ;; builtin project.el
   ;; remap the project-shell to use vterm
-  ([remap project-shell] . vterm))
+  ([remap project-shell] . vterm)
+  :init
+  (add-hook 'vterm-exit-functions
+     (lambda (_ _)
+       (let* ((buffer (current-buffer))
+              (window (get-buffer-window buffer)))
+         (when (not (one-window-p))
+           (delete-window window))
+         (kill-buffer buffer)))))
 
 ;; magit for VC, I like the magit.
 (use-package magit)
