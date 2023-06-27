@@ -66,6 +66,9 @@
   (add-hook 'eglot--managed-mode-hook #'eglot-actions-before-save))
 
 
+;; Add go-run command
+(use-package gotest)
+
 ;; golang indent
 (add-hook 'go-mode-hook
 	    (lambda ()
