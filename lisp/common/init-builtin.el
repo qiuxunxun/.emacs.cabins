@@ -83,6 +83,12 @@
   ;; long word wrap when export to pdf
   (add-to-list 'org-latex-packages-alist '("" "seqsplit")))
 
+(use-package ox-hugo
+  :ensure t)
+
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
+
 ;; Pulse the cursor line
 (dolist (cmd '(recenter-top-bottom other-window))
   (advice-add cmd :after
