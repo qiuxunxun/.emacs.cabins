@@ -78,10 +78,11 @@
 
 ;; vterm is better than builtin eshell
 (use-package vterm
+  :after project
   :bind
   ;; builtin project.el
   ;; remap the project-shell to use vterm
-  ([remap project-shell] . vterm)
+  ([remap project-shell] . vterm-other-window)
   :init
   (add-hook 'vterm-exit-functions
      (lambda (_ _)
