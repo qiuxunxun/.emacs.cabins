@@ -125,6 +125,10 @@
 (global-set-key (kbd "C-c <up>")    'windmove-up)
 (global-set-key (kbd "C-c <down>")  'windmove-down)
 
+;; Global-Set-Key for mark and pop mark
+(global-set-key (kbd "C-.") 'set-mark-command)
+(global-set-key (kbd "C-x C-.") 'pop-global-mark)
+
 (provide 'init-builtin)
 
 ;;; init-builtin.el ends here
