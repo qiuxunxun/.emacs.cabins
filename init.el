@@ -42,7 +42,7 @@
 
 
 ;; init chinese
-(require 'init-chinese)
+;;(require 'init-chinese)
 
 ;; DON'T forget to define and load custom file at last
 (setq custom-file (locate-user-emacs-file "custom.el"))

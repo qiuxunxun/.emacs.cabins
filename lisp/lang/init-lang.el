@@ -15,10 +15,10 @@
   (electric-pair-mode)
   (flymake-mode)
   (hs-minor-mode)
-  (prettify-symbols-mode)
+  (prettify-symbols-mode))
 
-  (use-package highlight-parentheses
-    :hook (prog-mode . highlight-parentheses-mode)))
+  ;; (use-package highlight-parentheses
+    ;; :hook (prog-mode . highlight-parentheses-mode)))
 (add-hook 'prog-mode-hook 'prog-extra-modes)
 
 ;; Flymake
@@ -31,7 +31,7 @@
 ;; 非内置支持的一些编程语言模式
 (use-package emmet-mode
   :hook ((web-mode css-mode) . emmet-mode))
-(use-package go-mode)
+;;(use-package go-mode)
 (use-package kotlin-mode)
 (use-package markdown-mode)
 (use-package protobuf-mode)
@@ -46,6 +46,9 @@
   (setq web-mode-enable-current-element-highlight t))
 (use-package yaml-mode)
 
+
+
+
 ;; 一些感觉比较有用的工具
 (use-package quickrun)                  ; quickrun code
 (use-package restclient
@@ -54,7 +57,9 @@
 ;; Language Server (eglot - builtin)
 ;; **************************************************
 (use-package eglot
-  :hook ((c-mode c++-mode css-mode go-mode java-mode js-mode kotlin-mode python-mode rust-mode ruby-mode web-mode) . eglot-ensure)
+  ;; :hook ((c-mode c++-mode css-mode  java-mode js-mode kotlin-mode python-mode rust-mode ruby-mode web-mode) . eglot-ensure)
+  :hook
+  ((go-ts-mode) . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs '(web-mode "vls"))
 
@@ -66,14 +71,30 @@
   (add-hook 'eglot--managed-mode-hook #'eglot-actions-before-save))
 
 
+;; Treesitter
+(use-package treesit-auto
+  :demand
+  :init
+  (setq treesit-font-lock-level 4)
+  :config
+  (global-treesit-auto-mode))
+
+;; golang
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+(add-hook 'go-ts-mode-hook
+          (lambda()
+          (setq go-ts-mode-indent-offset 4)))
+
+
+
 ;; Add go-run command
 (use-package gotest)
 
 ;; golang indent
-(add-hook 'go-mode-hook
-	    (lambda ()
-	      (setq indent-tabs-mode 1)
-	      (setq tab-width 4)))
+;; (add-hook 'go-mode-hook
+;; 	    (lambda ()
+;; 	      (setq indent-tabs-mode 1)
+;; 	      (setq tab-width 4)))
 
 
 ;; vterm is better than builtin eshell
