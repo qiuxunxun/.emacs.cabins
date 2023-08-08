@@ -59,7 +59,7 @@
 (use-package eglot
   ;; :hook ((c-mode c++-mode css-mode  java-mode js-mode kotlin-mode python-mode rust-mode ruby-mode web-mode) . eglot-ensure)
   :hook
-  ((go-ts-mode) . eglot-ensure)
+  ((go-ts-mode c-ts-mode c++-ts-mode) . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs '(web-mode "vls"))
 
@@ -84,8 +84,6 @@
 (add-hook 'go-ts-mode-hook
           (lambda()
           (setq go-ts-mode-indent-offset 4)))
-
-
 
 ;; Add go-run command
 (use-package gotest)
