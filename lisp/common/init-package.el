@@ -68,6 +68,11 @@
 (use-package which-key
   :hook (after-init . which-key-mode))
 
+;; Better dired whth `dirvish.el'
+(use-package dirvish
+  :init
+  (dirvish-override-dired-mode))
+
 (provide 'init-package)
 
 ;; Local Variables:
