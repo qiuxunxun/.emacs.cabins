@@ -94,6 +94,17 @@
 ;; 	      (setq indent-tabs-mode 1)
 ;; 	      (setq tab-width 4)))
 
+;;
+;; cmake mode
+;;
+;; Install cmake-language-server:
+;; pip install cmake-language-server
+;; repo: https://github.com/regen100/cmake-language-server
+;; TODO: I don't like python, maybe I can use rust version or go version. (Daydream)
+(use-package cmake-mode
+  :hook
+  (cmake-ts-mode . eglot-ensure))
+
 
 ;; vterm is better than builtin eshell
 (use-package vterm
