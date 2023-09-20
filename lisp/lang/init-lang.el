@@ -57,6 +57,8 @@
 ;; Language Server (eglot - builtin)
 ;; **************************************************
 (use-package eglot
+  :init
+  (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
   ;; :hook ((c-mode c++-mode css-mode  java-mode js-mode kotlin-mode python-mode rust-mode ruby-mode web-mode) . eglot-ensure)
   :hook
   ((go-ts-mode c-ts-mode c++-ts-mode rust-ts-mode) . eglot-ensure)
